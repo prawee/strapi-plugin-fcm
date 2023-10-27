@@ -40,7 +40,7 @@ module.exports = {
         if (entry.targetType === 'tokens') {
             const tokens = entry.target.split(',');
             if (tokens.length > 1) {
-                res = await admin.messaging().sendMulticast({ tokens }, payload, options);
+                res = await admin.messaging().sendMulticast({ tokens, ...payload})
             } else {
                 res = await admin.messaging().sendToDevice(entry.target, payload, options);
             }
